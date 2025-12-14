@@ -13,12 +13,12 @@
         */
         :root {
             /* Color Palette */
-            --color-bg-light: #f9f9fb; /* Soft White/Light Grey */
-            --color-card-bg: #ffffff; /* Pure White */
-            --color-text-primary: #1c1c1e; /* Dark Grey/Black */
-            --color-text-secondary: #6e6e73; /* Medium Grey */
-            --color-accent: #004d99; /* Deep Ocean Blue (Updated for UMT Theme) */
-            --color-border: #e0e0e3; /* Subtle Border Grey */
+            --color-bg-light: #f9f9fb;
+            --color-card-bg: #ffffff;
+            --color-text-primary: #1c1c1e;
+            --color-text-secondary: #6e6e73;
+            --color-accent: #004d99; /* Deep Ocean Blue (UMT Theme) */
+            --color-border: #e0e0e3;
 
             /* Spacing */
             --spacing-gap: 16px;
@@ -76,12 +76,12 @@
             border: 1px solid var(--color-border);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
         }
-
+        
         .bento-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px) scale(1.01); 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .card-header {
@@ -93,7 +93,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Accent Styles for Key Info */
         .highlight {
             color: var(--color-accent);
             font-weight: 600;
@@ -123,14 +122,30 @@
             grid-column: span 2;
             grid-row: span 2;
             justify-content: space-between;
+            
+            /* --- BACKGROUND IMAGE UPDATE (kt.jpg) --- */
+            background-image: url('kt.jpg'); 
+            background-size: cover;          
+            background-position: center;     
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 0; 
         }
+
+        /* Style for the inner content wrapper to add a semi-transparent white overlay */
+        .profile-content-wrapper {
+            background-color: rgba(255, 255, 255, 0.85); /* 85% opacity white overlay */
+            border-radius: 12px;
+            padding: var(--spacing-padding);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .card-profile h2 {
             font-size: 2.5rem;
             margin-top: 10px;
             margin-bottom: 0;
-        }
-        .card-profile .details {
-            margin-bottom: 20px;
         }
         .card-profile .tagline {
             font-style: italic;
@@ -155,7 +170,7 @@
             color: var(--color-text-primary);
         }
 
-        /* Card 3 (Tech Stack) - Medium Box */
+        /* Card 3 (Tech Stack) - Medium Box (1x1) */
         .card-tech-stack {
             grid-column: span 1;
             grid-row: span 1;
@@ -179,7 +194,7 @@
         }
 
 
-        /* Card 4 (Case Study) - Medium Box */
+        /* Card 4 (Case Study) - Medium Box (1x1) */
         .card-case-study {
             grid-column: span 1;
             grid-row: span 1;
@@ -194,7 +209,7 @@
              text-decoration: underline;
         }
 
-        /* Card 5 (Hobby) - Small box (1x1) */
+        /* Card 5 (Hobby) - Small Box (1x1) */
         .card-hobby {
             grid-column: span 1;
             grid-row: span 1;
@@ -205,7 +220,16 @@
             color: var(--color-text-primary);
         }
 
-        /* Card 6 (Playlist) - Wide box (3x1) - At the bottom */
+        /* Card 7 (Reflection) - New Card (1x1) */
+        .card-reflection {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .card-reflection p {
+            font-weight: 500;
+        }
+
+        /* Card 6 (Playlist) - Wide Box (3x1) */
         .card-playlist {
             grid-column: 1 / -1;
             min-height: 100px;
@@ -242,6 +266,9 @@
                 grid-row: auto !important;
                 padding: 20px;
             }
+            .card-profile {
+                padding: 0; 
+            }
 
             .card-profile h2 {
                 font-size: 2rem;
@@ -252,6 +279,10 @@
             .card-playlist {
                 min-height: 80px;
             }
+            
+            .bento-card:hover {
+                transform: translateY(-2px) scale(1.005);
+            }
         }
     </style>
 </head>
@@ -261,23 +292,25 @@
         <div class="bento-grid">
             
             <div class="bento-card card-profile">
-                <div class="details">
-                    <span class="card-header">Student Profile</span>
-                    <h2>BENJAMIN OOI</h2>
-                    <p class="tagline highlight">'Innovating food safety.'</p>
-                    <p>
-                        <span class="highlight">Food Science</span>, Year 1
-                    </p>
-                    <p class="summary">
-                        Eager undergraduate exploring fundamental food chemistry and quality control techniques. Focused on developing robust lab skills and contributing to food system innovation.
-                    </p>
-                </div>
-                
-                <div class="socials">
-                    <span class="card-header">Connect</span>
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="#" class="social-link">GitHub</a>
-                    <a href="#" class="social-link">UMT Portal</a>
+                <div class="profile-content-wrapper">
+                    <div class="details">
+                        <span class="card-header">Student Profile</span>
+                        <h2>BENJAMIN OOI</h2>
+                        <p class="tagline highlight">'Innovating food safety.'</p>
+                        <p>
+                            <span class="highlight">Food Science</span>, Year 1
+                        </p>
+                        <p class="summary">
+                            Eager undergraduate exploring fundamental food chemistry and quality control techniques. Focused on developing robust lab skills and contributing to food system innovation.
+                        </p>
+                    </div>
+                    
+                    <div class="socials">
+                        <span class="card-header">Connect</span>
+                        <a href="#" class="social-link" target="_blank">LinkedIn</a>
+                        <a href="#" class="social-link" target="_blank">GitHub</a>
+                        <a href="#" class="social-link" target="_blank">UMT Portal</a>
+                    </div>
                 </div>
             </div>
 
@@ -287,7 +320,7 @@
                     <span class="highlight">UMT</span>, Kuala Nerus
                 </p>
                 <p>
-                    <small>Local Time: 14:37 PM</small>
+                    <small>Current Time: 15:20 PM</small>
                 </p>
             </div>
 
@@ -320,12 +353,18 @@
                     A necessary break for reflection and coastal inspiration.
                 </p>
             </div>
+            
+            <div class="bento-card card-reflection">
+                <span class="card-header">Why Food Tech Matters in Malaysia</span>
+                <p>
+                    Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.
+                </p>
+            </div>
+
 
             <div class="bento-card card-playlist">
                 <span class="card-header">Working Soundtrack</span>
-                <p>
-                    [Placeholder] Instrumental Jazz for Focused Lab Sessions
-                </p>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0FIDCNYYjNvPVimz5icugS?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
 
         </div>
